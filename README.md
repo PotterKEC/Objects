@@ -1,45 +1,136 @@
-# Java Conditions Practice
+# Java Objects Introduction
 
-## Assignment Overview
-In this assignment, you will practice working with Java conditions, comparison operators, and type conversions. You'll be working with a set of predefined variables and need to complete several if statement conditions to make all the tests pass.
+This repository contains a practice activity for learning about Object-Oriented Programming in Java.
 
-## Your Task
-You need to complete the conditions in the `runConditions()` method of the `Assignment` class. The class contains four predefined variables:
-- `number1`: An integer with value 42
-- `number2`: An integer with value 7
-- `decimal`: A double with value 3.14
-- `text`: A String containing "123"
+## What Are Objects?
 
-### Requirements
-1. You must only modify the conditions inside the if statements
-2. You cannot add any new variables
-3. You cannot modify the print statements
-4. You cannot add any additional code outside of the if statement conditions
+In Java, objects are instances of classes. Think of a class as a blueprint for creating objects:
+- A **class** defines the properties (attributes) and behaviors (methods) that objects of that type will have
+- An **object** is a specific instance of a class with its own unique data
 
-### What You Need to Know
-- How to use comparison operators (`>`, `<`, `>=`, `<=`, `==`, `!=`)
-- How to convert between different data types (String to int, int to double)
-- How to use the logical AND operator (`&&`)
-- How to use `Integer.parseInt()` for String to int conversion
+## How to Create a Class
 
-## Running the Tests
-The tests will verify that:
-1. All five conditions evaluate to true and print their success messages
-2. No additional print statements have been added
-3. The initial values of the variables haven't been modified
-
-To run the tests locally:
-```bash
-mvn test
+```java
+public class Book {
+    // Properties (attributes)
+    private String title;
+    private String author;
+    private int pageCount;
+    
+    // Constructor
+    public Book(String title, String author, int pageCount) {
+        this.title = title;
+        this.author = author;
+        this.pageCount = pageCount;
+    }
+    
+    // Methods
+    public void displayInfo() {
+        System.out.println("Book: " + this.title + " by " + this.author + ", " + this.pageCount + " pages");
+    }
+    
+    // Getters and Setters
+    public String getTitle() {
+        return this.title;
+    }
+    
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    public String getAuthor() {
+        return this.author;
+    }
+    
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    
+    public int getPageCount() {
+        return this.pageCount;
+    }
+    
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+}
 ```
 
-## Submission
-Push your changes to GitHub. The autograder will automatically run the tests and provide feedback on your submission.
+## How to Create an Object
 
-## Hints
-- Remember that you can convert a String to an integer using `Integer.parseInt()`
-- When comparing doubles, consider type conversion of other numbers
-- Think about the relationship between the given numbers
-- The fifth condition should use the AND operator (`&&`) to combine multiple comparisons
+Once you have defined a class, you can create objects of that class:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Create a new Book object
+        Book harryPotter = new Book("Harry Potter", "J.K. Rowling", 400);
+        
+        // Use the object's methods
+        harryPotter.displayInfo();
+        
+        // Access properties using getters
+        System.out.println("Title: " + harryPotter.getTitle());
+        
+        // Modify properties using setters
+        harryPotter.setPageCount(423);
+        System.out.println("Updated page count: " + harryPotter.getPageCount());
+    }
+}
+```
+
+## Your Assignment: Create an Enemy Class
+
+For this assignment, you will create an `Enemy` class for a video game.
+
+### Requirements:
+
+1. Create an `Enemy` class with the following private properties:
+   - `name` (String)
+   - `health` (int)
+   - `damage` (int)
+   - `speed` (double)
+
+2. Create a constructor that accepts values for all properties
+
+3. Create getter and setter methods for all properties
+
+4. Add the following methods:
+   - `displayInfo()` - prints all enemy information
+   - `attack()` - returns the damage value and prints a message about attacking
+   - `takeDamage(int amount)` - reduces health by the amount and returns remaining health
+   - `isDefeated()` - returns true if health <= 0, false otherwise
+
+5. In your `Main` class, create at least two different Enemy objects and demonstrate using all of their methods
+
+### Example Output:
+
+```
+Enemy: Goblin
+Health: 50
+Damage: 10
+Speed: 2.5
+The Goblin attacks for 10 damage!
+Goblin took 20 damage, 30 health remaining.
+
+Enemy: Dragon
+Health: 200
+Damage: 40
+Speed: 1.0
+The Dragon attacks for 40 damage!
+Dragon took 50 damage, 150 health remaining.
+```
+
+## Folder Structure
+
+```
+project-root/
+├── src/
+│   ├── Book.java
+│   ├── Enemy.java
+│   └── Main.java
+└── README.md
+```
+
 
 Good luck!
